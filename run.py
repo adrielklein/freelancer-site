@@ -1,9 +1,11 @@
+import os
 import smtplib
 
 from flask import Flask
 from flask import render_template
 from flask import request
 
+PORT = 5000
 app = Flask(__name__)
 
 
@@ -33,5 +35,6 @@ message: {3}
     server.quit()
     return 'OK'
 
+
 if __name__ == "__main__":
-    app.run(host="0.0.0.0")
+    app.run(host="0.0.0.0", port=int(os.environ.get('PORT', PORT)))
