@@ -1,5 +1,6 @@
 import os
 import smtplib
+from email.mime.text import MIMEText
 
 from flask import Flask
 from flask import render_template
@@ -18,7 +19,7 @@ def home_page():
 def contact():
     server = smtplib.SMTP('mail.adrielklein.com')
 
-    msg = """From:
+    text = """From:
 To:
 Subject: New Message from {0}
 
@@ -28,6 +29,7 @@ email: {1}
 phone: {2}
 message: {3}
 """.format(request.form['name'], request.form['email'], request.form['phone'], request.form['message'])
+    msg = MIMEText(text)
 
     server.send_message(msg)
     server.quit()
