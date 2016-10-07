@@ -31,10 +31,10 @@ message: {3}
 """.format(request.form['name'], request.form['email'], request.form['phone'], request.form['message'])
     msg = MIMEText(text)
 
-    server.send_message(msg)
     msg['Subject'] = 'subject'
     msg['From'] = 'from'
     msg['To'] = 'to'
+    server.send_message(msg)
     server.quit()
     return 'OK'
 
