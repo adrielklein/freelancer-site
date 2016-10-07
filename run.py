@@ -17,24 +17,21 @@ def home_page():
 
 @app.route('/contact', methods=['POST'])
 def contact():
-    server = smtplib.SMTP('mail.adrielklein.com')
+    server = smtplib.SMTP('smtp.gmail.com', 587)
+    server.starttls()
+    server.login("adrielmklein2@gmail.com", "Dogsareawesome")
 
-    text = """From:
-To:
-Subject: New Message from {0}
+    msg = """From:
+    To:
+    Subject: New Message from {0}
 
-Congrats me! I just got a new message from a potential client!
-name: {0}
-email: {1}
-phone: {2}
-message: {3}
-""".format(request.form['name'], request.form['email'], request.form['phone'], request.form['message'])
-    msg = MIMEText(text)
-
-    msg['Subject'] = 'subject'
-    msg['From'] = 'adriel2@adrieklein.com'
-    msg['To'] = 'adriel@adrieklein.com'
-    server.send_message(msg)
+    Congrats me! I just got a new message from a potential client!
+    name: {0}
+    email: {1}
+    phone: {2}
+    message: {3}
+    """.format(request.form['name'], request.form['email'], request.form['phone'], request.form['message'])
+    server.sendmail("adrielmklein2@gmail.com", "adrielmklein@gmail.com", msg)
     server.quit()
     return 'OK'
 
