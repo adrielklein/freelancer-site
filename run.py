@@ -32,6 +32,9 @@ message: {3}
     msg = MIMEText(text)
 
     server.send_message(msg)
+    msg['Subject'] = 'subject'
+    msg['From'] = 'from'
+    msg['To'] = 'to'
     server.quit()
     return 'OK'
 
