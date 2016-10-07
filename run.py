@@ -32,8 +32,8 @@ message: {3}
     msg = MIMEText(text)
 
     msg['Subject'] = 'subject'
-    msg['From'] = 'adrielmklein2@gmail.com'
-    msg['To'] = 'adrielmklein2@gmail.com'
+    msg['From'] = 'adriel2@adrieklein.com'
+    msg['To'] = 'adriel@adrieklein.com'
     server.send_message(msg)
     server.quit()
     return 'OK'
