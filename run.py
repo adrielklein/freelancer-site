@@ -16,9 +16,7 @@ def home_page():
 
 @app.route('/contact', methods=['POST'])
 def contact():
-    server = smtplib.SMTP('smtp.gmail.com', 587)
-    server.starttls()
-    server.login("adrielmklein2@gmail.com", "Dogsareawesome")
+    server = smtplib.SMTP('localhost', 587)
 
     msg = """From:
 To:
@@ -31,7 +29,7 @@ phone: {2}
 message: {3}
 """.format(request.form['name'], request.form['email'], request.form['phone'], request.form['message'])
 
-    server.sendmail("", "adrielmklein@gmail.com", msg)
+    server.send_message(msg)
     server.quit()
     return 'OK'
 
