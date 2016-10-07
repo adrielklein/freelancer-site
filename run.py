@@ -32,7 +32,7 @@ message: {3}
     msg = MIMEText(text)
 
     msg['Subject'] = 'subject'
-    msg['From'] = 'fromsaf@afs.com'
+    msg['From'] = 'adrielmklein@gmail.com'
     msg['To'] = 'adrielmklein@gmail.com'
     server.send_message(msg)
     server.quit()
