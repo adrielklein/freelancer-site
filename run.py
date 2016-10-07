@@ -16,7 +16,7 @@ def home_page():
 
 @app.route('/contact', methods=['POST'])
 def contact():
-    server = smtplib.SMTP('localhost', 587)
+    server = smtplib.SMTP('mail.adrielklein.com')
 
     msg = """From:
 To:
