@@ -20,9 +20,7 @@ def contact():
     server.starttls()
     server.login("adrielmklein2@gmail.com", "Dogsareawesome")
 
-    msg = """From:
-    To:
-    Subject: New Message from {0}
+    msg = """Subject: New Message from {0}
 
     Congrats me! I just got a new message from a potential client!
     name: {0}
