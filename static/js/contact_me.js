@@ -21,7 +21,7 @@ $(function() {
                 firstName = name.split(' ').slice(0, -1).join(' ');
             }
             $.ajax({
-                url: "http://www.adrieklein.com/contact",
+                url: "././contact",
                 type: "POST",
                 data: {
                     name: name,
