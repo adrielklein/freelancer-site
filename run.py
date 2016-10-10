@@ -30,6 +30,7 @@ def contact():
                      text_body=msg)
 
     message.send()
+    return 'OK'
 
 
 if __name__ == "__main__":
