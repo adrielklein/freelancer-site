@@ -1,1 +1,2 @@
 flask==0.11.1
+python-postmark>=0.4.3
