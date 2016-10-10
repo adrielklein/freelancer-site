@@ -1,9 +1,9 @@
 import os
-import smtplib
 
 from flask import Flask
 from flask import render_template
 from flask import request
+from postmark import PMMail
 
 PORT = 5000
 app = Flask(__name__)
@@ -16,21 +16,20 @@ def home_page():
 
 @app.route('/contact', methods=['POST'])
 def contact():
-    server = smtplib.SMTP('smtp.gmail.com', 587)
-    server.starttls()
-    server.login("adrielmklein2@gmail.com", "Dogsareawesome")
-
-    msg = """Subject: New Message from {0}
-
-    Congrats me! I just got a new message from a potential client!
+    msg = """Congrats me! I just got a new message from a potential client!
     name: {0}
     email: {1}
     phone: {2}
     message: {3}
     """.format(request.form['name'], request.form['email'], request.form['phone'], request.form['message'])
-    server.sendmail("adrielmklein2@gmail.com", "adrielmklein@gmail.com", msg)
-    server.quit()
-    return 'OK'
+
+    message = PMMail(api_key=os.environ.get('POSTMARK_API_TOKEN'),
+                     subject="New message from {0}".format(request.form['name']),
+                     sender="adriel@adrielklein.com",
+                     to="adrielmklein@gmail.com",
+                     text_body=msg)
+
+    message.send()
 
 
 if __name__ == "__main__":
